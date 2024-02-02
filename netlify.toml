@@ -1,7 +1,11 @@
-    [[headers]]
-      for = "/*"
-      [headers.values]
+[[headers]]
+    for = "/*"
+    [headers.values]
         Strict-Transport-Security = '''
         max-age=63072000;
         includeSubDomains;
         preload'''
+[build]
+    base = "/"
+    command = "swift build -c release --disable-sandbox --enable-test-discovery" 
+    
