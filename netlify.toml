@@ -6,9 +6,17 @@
         includeSubDomains;
         preload'''
 [build]
-    base = "/"
-    command = "swift build -c release --disable-sandbox --enable-test-discovery" 
-    publish = ".build/release/App"
-    
-[context.production.environment]
-    SWIFT_ENV = "production"
+  command = "swift build -c release --disable-sandbox --enable-test-discovery"
+  publish = ".build/release"
+
+[[plugins]]
+  package = "@netlify/plugin-functions"
+  [plugins.inputs]
+    functions = "Functions"
+    node_bundler = "npm"
+
+[[plugins]]
+  package = "./netlify-plugin-vapor"
+  [plugins.inputs]
+    arguments = "run serve --env production"
+    executable = "App"
