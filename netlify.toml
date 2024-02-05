@@ -8,7 +8,7 @@
 [build]
     base = "/"
     command = "swift build -c release --disable-sandbox --enable-test-discovery" 
-    publish = ".build/release/App
+    publish = ".build/release/App"
     
 [context.production.environment]
     SWIFT_ENV = "production"
